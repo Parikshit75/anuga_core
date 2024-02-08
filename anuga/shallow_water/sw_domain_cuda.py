@@ -169,8 +169,10 @@ class GPU_interface(object):
         # Locate cuda_anuga.cu code
         import anuga.shallow_water as sw
         import os        
-        sw_dir = os.path.dirname(sw.__file__)
-        cu_file = anuga.join(sw_dir,'cuda_anuga.cu')
+        #sw_dir = os.path.dirname(sw.__file__)
+        #cu_file = anuga.join(sw_dir,'cuda_anuga.cu')
+        sw_dir = os.environ.get('PROJECT_ROOT')
+        cu_file = anuga.join(sw_dir,'anuga/shallow_water/cuda_anuga.cu')
         #with open('../cuda_anuga.cu') as f:
         with open(cu_file) as f:
             code = f.read()
